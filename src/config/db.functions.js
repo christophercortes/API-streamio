@@ -30,11 +30,9 @@ const COLUMNS = {
             user_email,
             user_phone,
             user_address,
-            password_hash,
             last_login,
             created_date,
-            updated_date,
-            is_active
+            updated_date
         `
             .trim()
             .replace(/\s+/g, " "),
@@ -52,8 +50,7 @@ const auth = {
     getAll: () =>
         pool.query(
             `SELECT ${COLUMNS.user.base}
-            FROM auth.user_get_all()`,
-            [isActive]
+            FROM auth.user_get_all()`
         ),
 };
 

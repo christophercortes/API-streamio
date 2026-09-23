@@ -5,6 +5,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
+const userRoutes = require('./routes/users.routes');
+
 const { ENV } = require('./config/env');
 
 const app = express();
@@ -15,5 +17,8 @@ app.use(cors({
     credentials: true,
 })
 );
+
+// Routes
+app.use('/users', userRoutes);
 
 module.exports = { app };
