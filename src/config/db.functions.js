@@ -46,11 +46,24 @@ const COLUMNS = {
 const auth = {
     /**
      * List all users
+     * @returns {Promise<{rows: Array}>}
      */
     getAll: () =>
         pool.query(
             `SELECT ${COLUMNS.user.base}
             FROM auth.user_get_all()`
+        ),
+    
+    /**
+     * Get user by ID
+     * @param {number} id
+     * @returns {Promise<{rows: Array}>}
+     */
+    getUserById: (id) =>
+        pool.query(
+            `SELECT ${COLUMNS.user.base}
+            FROM auth.user_get_by_id($1)`,
+            [id],
         ),
 };
 

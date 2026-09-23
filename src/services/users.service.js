@@ -8,6 +8,12 @@ async function listUsers() {
     return users.map(userResponse);
 }
 
+async function GetUserById(id) {
+    const user = await repositoryUserPostgres.userById(id);
+    return user ? userResponse(user) : null;
+}
+
 module.exports = {
     listUsers,
+    GetUserById,
 };
