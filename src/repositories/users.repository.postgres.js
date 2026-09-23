@@ -27,6 +27,16 @@ const repositoryUserPostgres = {
         const { rows } = await auth.getAll();
         return rows.map(mapUserFromDatabase);
     },
+
+    /**
+     * Get users by id
+     * @param {number} id
+     * @returns {Promise<Object|null>}
+     */
+    async userById(id) {
+        const { rows } = await auth.getUserById(id);
+        return mapUserFromDatabase(rows[0]);
+    },
 };
 
 module.exports = { repositoryUserPostgres };

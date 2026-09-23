@@ -6,5 +6,6 @@ const router = express.Router();
 
 //Lists
 router.get('/', userController.listUsers);
+router.get('/:id', userController.userById);
 
 module.exports = router;
